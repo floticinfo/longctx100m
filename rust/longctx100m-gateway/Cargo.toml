@@ -1,0 +1,26 @@
+[package]
+name = "longctx100m-gateway"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[[bin]]
+name = "longctx100m-gateway"
+path = "src/main.rs"
+
+[dependencies]
+base64.workspace = true
+bytes.workspace = true
+futures-util.workspace = true
+http-body-util.workspace = true
+hyper.workspace = true
+hyper-util.workspace = true
+longctx100m-core = { path = "../longctx100m-core" }
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+subtle.workspace = true
+sha2.workspace = true
+tokio.workspace = true
+tempfile.workspace = true

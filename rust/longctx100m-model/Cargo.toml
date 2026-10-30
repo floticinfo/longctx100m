@@ -1,0 +1,32 @@
+[package]
+name = "longctx100m-model"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+description = "Rust ring-attention decoder model and training runtime (candle)"
+
+[dependencies]
+candle-core = { workspace = true }
+candle-nn = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+safetensors = { workspace = true }
+half = { workspace = true }
+rand = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+
+[[bin]]
+name = "longctx100m-train"
+path = "src/bin/train.rs"
+
+[[bin]]
+name = "longctx100m-infer"
+path = "src/bin/infer.rs"
+
+[[bin]]
+name = "longctx100m-ringcheck"
+path = "src/bin/ringcheck.rs"

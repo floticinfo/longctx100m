@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "longctx100m"
+version = "0.4.0"
+description = "Distributed 100M-token decoder and inference gateway"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.optional-dependencies]
+engine = ["torch>=2.4"]
+kernel = ["torch>=2.4", "triton>=3.1; platform_system == 'Linux'", "transformers>=4.45"]
+pretrained = ["transformers>=4.45", "huggingface_hub>=0.24", "safetensors>=0.4", "tokenizers>=0.20"]
+engine-windows-cpu = ["torch>=2.4; platform_system == 'Windows'"]
+vllm-adapter = ["transformers>=4.45"]
+
+[project.scripts]
+longctx100m-serve = "longctx100m.__main__:gateway_main"
+longctx100m-vllm-adapter = "longctx100m.__main__:adapter_main"
+longctx100m-train = "longctx100m.__main__:train"
+longctx100m-infer = "longctx100m.__main__:infer"
+longctx100m-capacity = "longctx100m.__main__:capacity"
+longctx100m-import-llama = "longctx100m.__main__:import_model"
+
+[tool.longctx100m.rust-migration]
+workspace = "Cargo.toml"
+cli = "longctx100m-rs"
+status = "parallel-core-gateway-and-importer"
+http-gateway = "longctx100m-gateway"
+checkpoint-importer = "longctx100m-import-llama"
+python-runtime-retained = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+longctx100m = ["web/*.html"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
