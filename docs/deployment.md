@@ -1,7 +1,7 @@
 # 배포 가이드
 
 > **운영 구성/시크릿**: 실제 배포 시크릿, 키 회전 정책, 프로비저닝/업그레이드/장애 runbook은
-> **private 저장소** `Flotic-LC/longctx100m-deploy`에 보관합니다. 이 문서는 공개 토폴로지와
+> **private 저장소** `floticinfo/longctx100m-deploy`에 보관합니다. 이 문서는 공개 토폴로지와
 > 실행 명령만 담습니다.
 
 ## 구성 요소
