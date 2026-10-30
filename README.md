@@ -2,6 +2,11 @@
 
 **목표:** dense causal attention으로 1억 token 입력 전체를 실제 한 모델 요청에서 처리하는 학습/추론 stack을 구현한다. UI는 하나의 파일과 질문만 전송하고, engine은 sequence/context parallel ring attention으로 KV shard를 rank 사이에 전달한다. 검색·분할 에이전트 요약으로 입력을 대체하지 않는다.
 
+## 저장소 구조
+
+- **`Flotic-LC/longctx100m`** (public): 전체 소스 코드, 문서, 테스트, parity 검증 스크립트.
+- **`Flotic-LC/longctx100m-deploy`** (private): 운영 배포 시크릿 템플릿, 키 회전 정책, 프로비저닝/업그레이드/장애 runbook. 배포 시 이 저장소를 참조하세요.
+
 프로젝트에는 자체 decoder 모델, exact causal ring attention과 custom backward, optional Triton tiled kernel, 학습 진입점, CUDA 분산 prefill reference, 브라우저 gateway 및 vLLM adapter가 있다. 각 기능 범위와 아직 필요한 long-sequence 학습/성능 검증은 [`docs/engine-design.md`](docs/engine-design.md)에 적었다.
 
 ## 실행
